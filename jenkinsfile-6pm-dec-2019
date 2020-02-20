@@ -21,8 +21,8 @@ pipeline {
             steps{
                 sshagent (credentials: ['dev-server']) {
 				    script{
-					    sh returnStatus: true, script: 'ssh ec2-user@172.31.40.235 docker rm -f nodeapp'
-						def runCmd = "docker run -d -p 8080:8080 --name=nodeapp patthipati/nodeapp:${DOCKER_TAG}"
+					    sh returnStatus: true, script: 'ssh ec2-user@172.31.40.235 docker rm -f node-app1'
+						def runCmd = "docker run -d -p 8080:8080 --name=nodeapp patthipati/node-app1:${DOCKER_TAG}"
 						sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.40.235 ${runCmd}"
 					}
 				}
